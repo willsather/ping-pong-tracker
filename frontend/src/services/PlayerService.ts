@@ -32,7 +32,7 @@ export default class PlayerService {
     return await this.repository.removePlayer(new ObjectId(id));
   }
 
-  private static convertPlayerDto(playerDto: PlayerDto, id: ObjectId = new ObjectId(), rating: number = 1000): Player {
+  private static convertPlayerDto(playerDto: PlayerDto, id: ObjectId = new ObjectId(), rating = 1000): Player {
     return {
       _id: id,
       name: playerDto.name,
