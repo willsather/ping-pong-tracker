@@ -7,10 +7,12 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "test": "NODE_ENV=test jest --watch",
-    "test:ci": "NODE_ENV=test jest --ci"
+    "test:ci": "NODE_ENV=test jest --ci --force-exit"
   },
   "dependencies": {
     "@nextui-org/react": "^1.0.0-beta.12",
+    "@svgr/webpack": "^7.0.0",
+    "canvas-confetti": "^1.6.0",
     "mongodb": "^4.14.0",
     "next": "latest",
     "react": "^18.2.0",
@@ -21,6 +23,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/canvas-confetti": "^1.6.0",
     "@types/node": "18.7.5",
     "@types/react": "16.9.17",
     "@types/testing-library__jest-dom": "^5.14.5",
