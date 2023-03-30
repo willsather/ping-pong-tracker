@@ -20,13 +20,27 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/public/*": ["public/*"],
-      "@/pages/*": ["pages/*"],
-      "@/styles/*": ["styles/*"],
-      "@/src/*": ["src/*"],
-      "@/types/*": ["types/*"],
-      "@/__tests__/*": ["__tests__/*"],
-      "@/__mocks__/*": ["__mocks__/*"]
+      "@/public/*": [
+        "public/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/src/*": [
+        "src/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "@/__tests__/*": [
+        "__tests__/*"
+      ],
+      "@/__mocks__/*": [
+        "__mocks__/*"
+      ]
     }
   },
   "include": [

@@ -1,8 +1,8 @@
-import {ObjectId} from "mongodb";
+import { ObjectId } from "mongodb";
 
 export type Player = {
-    _id: ObjectId;
-    name: string;
-    username: string;
-    rating: number;
-}
+  _id: ObjectId;
+  name: string;
+  username: string;
+  rating: number;
+};
