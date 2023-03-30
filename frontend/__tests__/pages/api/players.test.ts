@@ -3,6 +3,14 @@ import { NextApiResponse } from "next";
 import { stubPlayers } from "@/__mocks__/stubPlayers"
 import getPlayers from "@/pages/api/players";
 
+const getPlayersSpy = jest.fn().mockImplementation(() => stubPlayers);
+
+jest.mock("@/src/services/PlayerService", () => {
+    return jest.fn().mockImplementation(() => {
+        return { getPlayers: getPlayersSpy };
+    });
+});
+
 describe("players api", () => {
     const json = jest.fn();
     const status = jest.fn(() => {
@@ -20,6 +28,7 @@ describe("players api", () => {
     });
 
     it("retrieves all players", async () => {
+        expect(true).toBeTruthy();
         await getPlayers(
             {
                 method: "GET",

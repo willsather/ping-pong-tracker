@@ -1,17 +1,11 @@
-import clientPromise from "../../src/mongodb";
-
 import type {NextApiRequest, NextApiResponse} from "next";
+import PlayerService from "@/src/services/PlayerService";
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method == "GET") {
         try {
-            const client = await clientPromise;
-            const db = client.db(process.env.DATABASE_NAME);
-
-            const players = await db
-                .collection("Players")
-                .find({})
-                .toArray();
+            const playerService = new PlayerService();
+            const players = playerService.getPlayers();
 
             res.status(200).json(players);
         } catch (e) {
