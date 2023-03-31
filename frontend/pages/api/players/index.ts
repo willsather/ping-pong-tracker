@@ -50,12 +50,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       break;
 
     case "POST":
+      const body = JSON.parse(req.body);
+
       try {
-        if (!req.body?.player) {
+        if (!body?.player) {
           res.status(400).json("Invalid Player Object");
         }
 
-        const player: PlayerDto = req.body.player;
+        const player: PlayerDto = body.player;
         await playerService.createPlayer(player);
 
         res.status(201);

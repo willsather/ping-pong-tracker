@@ -8,22 +8,23 @@ export default class PlayerClient {
     }).then((res) => res.json());
   }
 
+  createPlayer(player: PlayerDto): Promise<void> {
+    return fetch(`/api/players`, {
+      method: "POST",
+      body: JSON.stringify({ player }),
+    }).then((res) => res.json());
+  }
+
   getPlayer(id: string): Promise<Player> {
     return fetch(`/api/players/${id}`, {
       method: "GET",
     }).then((res) => res.json());
   }
 
-  createPlayer(id: string): Promise<void> {
-    return fetch(`/api/players/${id}`, {
-      method: "GET",
-    }).then((res) => res.json());
-  }
-
-  updatePlayer(playerDto: PlayerDto, id: string): Promise<void> {
+  updatePlayer(player: PlayerDto, id: string): Promise<void> {
     return fetch(`/api/players/${id}`, {
       method: "PUT",
-      body: JSON.stringify({ playerDto }),
+      body: JSON.stringify({ player }),
     }).then((res) => res.json());
   }
 

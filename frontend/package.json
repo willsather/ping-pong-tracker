@@ -7,7 +7,7 @@
     "lint": "next lint",
     "lint:fix": "next lint --fix",
     "test": "NODE_ENV=test jest --watch",
-    "test:ci": "NODE_ENV=test jest --ci --force-exit"
+    "test:ci": "NODE_ENV=test jest --ci"
   },
   "dependencies": {
     "@svgr/webpack": "^7.0.0",

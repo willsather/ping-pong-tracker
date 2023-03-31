@@ -53,16 +53,16 @@ describe("players api", () => {
     });
 
     it("create a new player", async () => {
+      const player = {
+        name: "Fake name",
+        username: "Fake username",
+        city: "Boston",
+      };
+
       await playersApi(
         {
           method: "POST",
-          body: {
-            player: {
-              name: "Fake name",
-              username: "Fake username",
-              city: "Boston",
-            },
-          },
+          body: JSON.stringify({ player }),
         } as NextApiRequest,
         response
       );

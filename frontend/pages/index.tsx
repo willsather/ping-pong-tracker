@@ -11,7 +11,7 @@ export default function Home() {
       <h1>Ping Pong Tracker</h1>
       <div>
         <Players playerClient={playerClient} />
-        <CreatePlayer />
+        <CreatePlayer playerClient={playerClient} />
       </div>
     </div>
   );
