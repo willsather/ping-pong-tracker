@@ -1,5 +1,7 @@
-export type PlayerDto = {
-  name: string;
-  username: string;
-  city: string;
-};
+import { Record, String } from "runtypes";
+
+export const PlayerDto = Record({
+  name: String,
+  username: String,
+  city: String,
+});

@@ -29,6 +29,6 @@ describe("Players", () => {
 
   it("should render", () => {
     expect(screen.getByText("Create a new player")).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Add Player"})).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Add Player" })).toBeInTheDocument();
   });
 });

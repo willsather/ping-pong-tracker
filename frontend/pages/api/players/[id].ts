@@ -14,23 +14,30 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(200).json(player);
       } catch (e) {
         console.error(e);
-        res.status(400).json("Error: Failed to retrieve all players");
+        res.status(400).json(`Error: Failed to retrieve player with ID: ${id}`);
       }
       break;
 
     case "PUT":
+      const body = JSON.parse(req.body);
+
       try {
-        if (!req.body?.player) {
+        if (!body.player) {
           res.status(400).json("Invalid Player Object");
         }
 
-        const playerDto: PlayerDto = req.body.player;
+        const playerDto = PlayerDto.check(body.player);
+
+        if (!playerDto) {
+          res.status(400).json("Invalid Player Object");
+          return;
+        }
 
         await playerService.updatePlayer(playerDto, id);
         res.status(200);
       } catch (e) {
         console.error(e);
-        res.status(400).json("Error: Failed to update player");
+        res.status(400).json(`Error: Failed to update player with ID: ${id}`);
       }
       break;
 
@@ -40,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(200);
       } catch (e) {
         console.error(e);
-        res.status(400).json("Error: Failed to remove player");
+        res.status(400).json(`Error: Failed to delete player with ID: ${id}`);
       }
       break;
 

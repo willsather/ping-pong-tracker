@@ -88,16 +88,16 @@ describe("players api", () => {
     });
 
     it("updates a single player", async () => {
+      const player = {
+        name: "Fake name",
+        username: "Fake username",
+        city: "Boston",
+      };
+
       await individualPlayersApi(
         {
           method: "PUT",
-          body: {
-            player: {
-              name: "Fake name",
-              username: "Fake username",
-              city: "Boston",
-            },
-          },
+          body: JSON.stringify({ player }),
           query: {
             id: "fake-user-id",
           },
@@ -120,6 +120,43 @@ describe("players api", () => {
       );
       expect(status).toHaveBeenCalledWith(200);
       expect(removePlayerSpy).toHaveBeenCalled();
+    });
+  });
+
+  describe("HTTP Failure Codes", () => {
+    beforeEach(() => {
+      jest.spyOn(console, "warn").mockImplementation(() => jest.fn());
+      jest.spyOn(console, "error").mockImplementation(() => jest.fn());
+    });
+
+    it("fails to create a new invalid player", async () => {
+      const player = {};
+
+      await playersApi(
+        {
+          method: "POST",
+          body: JSON.stringify({ player }),
+        } as NextApiRequest,
+        response
+      );
+      expect(status).toHaveBeenCalledWith(400);
+      expect(createPlayerSpy).not.toHaveBeenCalled();
+    });
+
+    it("fails updates a single invalid player", async () => {
+      const player = {};
+      await individualPlayersApi(
+        {
+          method: "PUT",
+          body: JSON.stringify({ player }),
+          query: {
+            id: "fake-user-id",
+          },
+        } as unknown as NextApiRequest,
+        response
+      );
+      expect(status).toHaveBeenCalledWith(400);
+      expect(updatePlayerSpy).not.toHaveBeenCalled();
     });
   });
 });
