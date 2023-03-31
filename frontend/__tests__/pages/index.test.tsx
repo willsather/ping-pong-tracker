@@ -1,26 +1,27 @@
-import { render, screen } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import Home from "@/pages/index";
 
+const getPlayersSpy = jest.fn();
+
 jest.mock("next/router", () => require("next-router-mock"));
+jest.mock("@/src/clients/PlayerClient", () => {
+  return jest.fn().mockImplementation(() => {
+    return { getPlayers: () => getPlayersSpy };
+  });
+});
 
 describe("Home", () => {
   describe("Mongo is connected", () => {
-    beforeEach(() => {
-      render(<Home isConnected={true} />);
+    beforeEach(async () => {
+      render(<Home />);
+
+      await act(async () => {
+        await getPlayersSpy;
+      });
     });
 
     it("has home page", () => {
       screen.getByText(/Ping Pong Tracker/i);
-    });
-  });
-
-  describe("Mongo is not connected", () => {
-    beforeEach(() => {
-      render(<Home isConnected={false} />);
-    });
-
-    it("shows error", () => {
-      screen.getByText(/Error: Database is not connected/i);
     });
   });
 });

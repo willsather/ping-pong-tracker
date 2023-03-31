@@ -1,5 +1,5 @@
 export type PlayerDto = {
-  name: string,
-  username: string,
-  city: string,
-}
+  name: string;
+  username: string;
+  city: string;
+};

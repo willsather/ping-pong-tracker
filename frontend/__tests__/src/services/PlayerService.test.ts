@@ -52,7 +52,7 @@ describe("PlayerService", () => {
       name: stubPlayerDto.name,
       username: stubPlayerDto.username,
       city: "New York City",
-    }
+    };
 
     await service.updatePlayer(newPlayerDto, stubPlayer._id.toString());
     expect(updatePlayerSpy).toHaveBeenCalled();

@@ -1,11 +1,11 @@
-import { NextUIProvider } from '@nextui-org/react';
 import { AppProps } from "next/app";
+// import { ChakraProvider } from "@chakra-ui/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <NextUIProvider>
-      <Component {...pageProps} />
-    </NextUIProvider>
+    // <ChakraProvider>
+    <Component {...pageProps} />
+    // </ChakraProvider>
   );
 }
 
