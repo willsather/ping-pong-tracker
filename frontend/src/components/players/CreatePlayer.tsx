@@ -1,9 +1,10 @@
 import PlayerClient from "@/src/clients/PlayerClient";
 import { PlayerDto } from "@/types/PlayerDto";
+import { Static } from "runtypes";
 
 const CreatePlayer = ({ playerClient }: { playerClient: PlayerClient }) => {
   const onClick = async () => {
-    const playerDto: PlayerDto = {
+    const playerDto: Static<typeof PlayerDto> = {
       name: "asdf",
       username: "fakeUsername",
       city: "Boston",

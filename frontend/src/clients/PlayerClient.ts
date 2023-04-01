@@ -1,5 +1,6 @@
 import { Player } from "@/types/Player";
 import { PlayerDto } from "@/types/PlayerDto";
+import { Static } from "runtypes";
 
 export default class PlayerClient {
   getPlayers(): Promise<Player[]> {
@@ -8,7 +9,7 @@ export default class PlayerClient {
     }).then((res) => res.json());
   }
 
-  createPlayer(player: PlayerDto): Promise<void> {
+  createPlayer(player: Static<typeof PlayerDto>): Promise<void> {
     return fetch(`/api/players`, {
       method: "POST",
       body: JSON.stringify({ player }),
@@ -21,7 +22,7 @@ export default class PlayerClient {
     }).then((res) => res.json());
   }
 
-  updatePlayer(player: PlayerDto, id: string): Promise<void> {
+  updatePlayer(player: Static<typeof PlayerDto>, id: string): Promise<void> {
     return fetch(`/api/players/${id}`, {
       method: "PUT",
       body: JSON.stringify({ player }),
